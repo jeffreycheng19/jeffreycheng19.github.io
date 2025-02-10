@@ -4,7 +4,7 @@ article{
     color: #333;
 }
 
-article .featured{
+article.featured{
     background-color: #FFD54F;
     font-weight: bold;
     border: 2px solid #FFA000;
