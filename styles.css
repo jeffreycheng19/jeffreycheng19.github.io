@@ -22,3 +22,24 @@ article p {
 #Right{
     text-align: right;
 }
+
+h1{
+    text-align: center;
+}
+
+img{
+    margin: 0 auto;
+}
+
+@keyframes example {
+    from {background-color: blue;}
+    to {background-color: green;}
+  }
+  
+  div.box {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    animation-name: example;
+    animation-duration: 6s;
+  }
