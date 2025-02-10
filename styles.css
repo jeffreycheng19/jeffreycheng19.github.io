@@ -14,3 +14,11 @@ article p {
     line-height: 1.5;
     font-style: italic;
 }
+
+.address{
+    font-size: 14pt;
+}
+
+#Right{
+    text-align: right;
+}
