@@ -39,7 +39,7 @@ img{
   div.box {
     width: 100px;
     height: 100px;
-    background-color: red;
+    background-color: blue;
     animation-name: example;
     animation-duration: 6s;
   }
