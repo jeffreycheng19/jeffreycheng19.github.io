@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Selection</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <section class="container">
+        <h1>Choose Your Character</h1>
+        <form method="get" action="page3.html">
+            <fieldset id="characterForm" >
+                <legend>Choose Your Character</legend>
+
+                <div class="character">
+                    <input type="radio" id="aria" name="character" value="Aria, the Warrior" required>
+                    <label for="aria"><strong>Aria, the Warrior</strong>: Strong and brave, with the
+                        ability to overcome physical obstacles.</label>
+                </div>
+                <div class="character">
+                    <input type="radio" id="eldrin" name="character" value="Eldrin, the Mage" required>
+                    <label for="eldrin"><strong>Eldrin, the Mage</strong>: Wise and knowledgeable,
+                        with the power to solve puzzles and cast spells.</label>
+                </div>
+                <div class="character">
+                    <input type="radio" id="tara" name="character" value="Tara, the Rogue" required>
+                    <label for="tara"><strong>Tara, the Rogue</strong>: Quick and cunning, with skills
+                        in stealth and persuasion.</label>
+                </div>
+            </fieldset>
+
+            <input type="submit" value="Continue">
+        </form>
+    </section>
+</body>
+
+</html>
