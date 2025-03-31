@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer</title>
+</head>
+
+<body>
+    <p id="num">0</p>
+    <button id="start" type="button">Start</button>
+    <button id="stop" type="button">Stop</button>
+    <script>
+        let start = document.getElementById("start").addEventListener("click", startTime);
+        let stop = document.getElementById("stop").addEventListener("click", stopTime);
+        let text = document.getElementById("num");
+        let count = 0;
+        let going = false;
+        let timerId = null;
+
+        function stopTime() {
+            going = false;
+            clearInterval(timerId);
+        }
+
+        function startTime() {
+            if (going == false){
+                going = true;
+                timerId = setInterval(changeNum, 1000);
+            }
+        }
+
+        function changeNum() {
+            count++;
+            text.textContent = count;
+        }
+
+    </script>
+</body>
+
+</html>
