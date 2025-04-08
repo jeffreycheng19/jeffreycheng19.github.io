@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Add Expenses</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <main class="mt-5 px-5">
+        <h2 class="mb-4">Add Expenses</h2>
+        <form id="expenseForm" novalidate>
+            <div class="mb-3">
+                <label for="expensePlace" class="form-label">Place of Expense</label>
+                <input type="text" class="form-control" id="expensePlace" required>
+                <div id="expensePlaceFeedback" class="invalid-feedback">
+                    Place of expense must be at least 5 characters long.
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="expenseDate" class="form-label">Expense Date</label>
+                <input type="date" class="form-control" id="expenseDate" required>
+                <div id="expenseDateFeedback" class="invalid-feedback">
+                    Expense Date must be before today's date.
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="expenseAmount" class="form-label">Expense Amount</label>
+                <input type="number" step="any" class="form-control" id="expenseAmount" required>
+                <div id="expenseAmountFeedback" class="invalid-feedback">
+                    Expense Amount must be greater than $0 and less than $50,000.
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Expense Category</label>
+                <div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="categoryGroceries" value="Groceries">
+                        <label class="form-check-label" for="categoryGroceries">Groceries</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="categoryBusiness" value="Business">
+                        <label class="form-check-label" for="categoryBusiness">Business</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="categoryRestaurants" value="Restaurants">
+                        <label class="form-check-label" for="categoryRestaurants">Restaurants</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="categoryFun" value="Fun">
+                        <label class="form-check-label" for="categoryFun">Fun</label>
+                    </div>
+                </div>
+                <div id="expenseCategoryFeedback" class="invalid-feedback d-block" style="display: none;">
+                    Please select at least one category.
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="modeOfPayment" class="form-label">Mode of Payment</label>
+                <select class="form-select" id="modeOfPayment" required>
+                    <option value="">Select Payment Mode</option>
+                    <option value="Credit Card">Credit Card</option>
+                    <option value="Debit Card">Debit Card</option>
+                    <option value="Cash">Cash</option>
+                </select>
+                <div id="modeOfPaymentFeedback" class="invalid-feedback">
+                    Please select a mode of payment.
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit Expense</button>
+        </form>
+    </main>
+
+    <script>
+        const expenseForm = document.getElementById('expenseForm');
+        const expensePlaceInput = document.getElementById('expensePlace');
+        const expenseDateInput = document.getElementById('expenseDate');
+        const expenseAmountInput = document.getElementById('expenseAmount');
+        const modeOfPaymentInput = document.getElementById('modeOfPayment');
+
+        const categoryCheckboxes = document.querySelectorAll('input[type="checkbox"]');
+        const expenseCategoryFeedback = document.getElementById('expenseCategoryFeedback');
+
+        expenseForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+
+            expensePlaceInput.classList.remove('is-invalid', 'is-valid');
+            expenseDateInput.classList.remove('is-invalid', 'is-valid');
+            expenseAmountInput.classList.remove('is-invalid', 'is-valid');
+            modeOfPaymentInput.classList.remove('is-invalid', 'is-valid');
+
+            let isValid = true;
+
+            if (expensePlaceInput.value.trim().length < 5) {
+                expensePlaceInput.classList.add('is-invalid');
+                isValid = false;
+            } else {
+                expensePlaceInput.classList.add('is-valid');
+            }
+
+            const today = new Date();
+            const selectedDate = new Date(expenseDateInput.value);
+            if (expenseDateInput.value === "" || selectedDate >= today) {
+                expenseDateInput.classList.add('is-invalid');
+                isValid = false;
+            } else {
+                expenseDateInput.classList.add('is-valid');
+            }
+
+            let amountVal = parseFloat(expenseAmountInput.value);
+            if (isNaN(amountVal) || amountVal <= 0 || amountVal >= 50000) {
+                expenseAmountInput.classList.add('is-invalid');
+                isValid = false;
+            } else {
+                expenseAmountInput.value = amountVal.toFixed(2);
+                expenseAmountInput.classList.add('is-valid');
+            }
+
+            let isCategorySelected = false;
+            categoryCheckboxes.forEach((checkbox) => {
+                if (checkbox.checked) {
+                    isCategorySelected = true;
+                }
+            });
+            if (!isCategorySelected) {
+                isValid = false;
+            }
+
+            if (!modeOfPaymentInput.value) {
+                modeOfPaymentInput.classList.add('is-invalid');
+                isValid = false;
+            } else {
+                modeOfPaymentInput.classList.add('is-valid');
+            }
+
+            if (isValid) {
+                let selectedCategories = [];
+                categoryCheckboxes.forEach((checkbox) => {
+                    if (checkbox.checked) {
+                        selectedCategories.push(checkbox.value);
+                    }
+                });
+                const formData = {
+                    expensePlace: expensePlaceInput.value.trim(),
+                    expenseDate: expenseDateInput.value,
+                    expenseAmount: parseFloat(expenseAmountInput.value).toFixed(2),
+                    expenseCategory: selectedCategories,
+                    modeOfPayment: modeOfPaymentInput.value
+                };
+                console.log('Expense Data:', formData);
+                expenseForm.reset();
+
+                expensePlaceInput.classList.remove('is-valid');
+                expenseDateInput.classList.remove('is-valid');
+                expenseAmountInput.classList.remove('is-valid');
+                modeOfPaymentInput.classList.remove('is-valid');
+            }
+        });
+    </script>
+
+</body>
+
+</html>
