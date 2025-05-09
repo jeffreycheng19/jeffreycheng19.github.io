@@ -49,16 +49,12 @@ nav ul li:hover ul {
 }
 
 nav ul li:hover a:hover {
-    background-color: #ffaf3f;
+    background-color: #fea82f;
 }
 
 nav ul li:hover ul li a:hover {
     color: #fffecb;
     background: #EA2B1F;
-}
-
-.active {
-    background-color: #ff9f31;
 }
 
 body {
@@ -88,9 +84,42 @@ h2 {
 p {
     color: #61210F;
 }
- 
+
+table {
+    background-color: #fea82f;
+}
+
+th,
+td {
+    border: 1px solid #61210F;
+}
+
+th {
+    background-color: #EA2B1F;
+    color: #fffecb;
+}
+
+td {
+    background-color: #fffecb;
+}
+
 footer a {
     color: #F9DF74;
+}
+
+.photo1 {
+    height: 200px;
+    width: 200px;
+}
+
+.photo2 {
+    height: 150px;
+    width: 300px;
+}
+
+.photo3 {
+    height: 200px;
+    width: 150px;
 }
 
 #intro {
@@ -103,7 +132,15 @@ footer a {
 #wrap {
     background-color: #EDAE49;
     padding: 20px;
+
 }
+
+.home {
+    background-color: #EDAE49;
+    padding: 20px;
+    height: 350px;
+
+} 
 
 footer {
     padding: 10px;
@@ -115,32 +152,34 @@ footer {
     float: right;
 }
 
-.head {
+.thumbnails a img {
+    border: 25px solid red;
+    border-image: url("gallery/border.png") 25 25 stretch;
+    margin: 10px;
+}
+
+.thumbnails {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.courses{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.head{
     margin-bottom: 0px;
 }
 
-.photoG {
+#photoGal{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.photoG{
     padding-right: 20px;
 }
-
-.box{
-    display: flex;
-    justify-content: center;
-  align-items: center;
-    margin: auto 0px;
-}
-
-@keyframes example {
-    from {background-color: rgb(255, 145, 0);}
-    to {background-color: yellow;}
-  }
-  
-  div.box {
-    width: 100px;
-    height: 25px;
-    background-color: rgb(255, 145, 0);
-    animation-name: example;
-    animation-duration: 6s;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-  }

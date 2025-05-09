@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Jeffrey Cheng Blog</title>
+    <link rel="stylesheet" href="common_style.css">
+    <style>
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: #61210F;
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex: 0 1 20%;
+            flex-direction: column;
+            margin-top: 10px;
+        }
+
+        .card-header {
+            background: #F9DF74;
+            color: #EA2B1F;
+            /* red text */
+            text-align: center;
+            padding: 8px;
+            font-weight: bold;
+        }
+
+        .card-body {
+            padding: 12px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .skill-item {
+            padding: 6px 10px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: white;
+            text-align: center;
+            min-width: 60px;
+        }
+
+        .skill-item.html {
+            background: #e34c26;
+        }
+
+        .skill-item.css {
+            background: #264de4;
+        }
+
+        .skill-item.js {
+            background: #f7df1e;
+            color: #000;
+        }
+
+        .skill-item.react {
+            background: #61dafb;
+            color: #000;
+        }
+
+        .skill-item.java {
+            background: #007396;
+        }
+
+        .skill-item.node {
+            background: #8cc84b;
+            color: #000;
+        }
+
+        .skill-item.mysql {
+            background: #00758f;
+        }
+
+        .skill-item.rlang {
+            background: #276dc3;
+        }
+
+        .skill-item.python {
+            background: #3776ab;
+        }
+
+        .skill-item.figma {
+            background: #f24e1e;
+        }
+
+        .skill-item.github {
+            background: #181717;
+        }
+
+        #wrap{
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div id="intro">
+            <h1 class="head">Jeffrey Cheng</h1>
+            <h2>CS Major
+                <br>
+                Siena College
+            </h2>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="resume.html">Resume</a></li>
+                <li><a class="active" href="skills.html">Skills</a></li>
+                <li><a href="aboutme.html">About Me</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="wrap">
+
+        <div class="skill-card">
+            <div class="card-header">Frontend</div>
+            <div class="card-body">
+                <div class="skill-item html">HTML5</div>
+                <div class="skill-item js">JavaScript</div>
+                <div class="skill-item css">CSS3</div>
+                <div class="skill-item react">React JS</div>
+            </div>
+        </div>
+
+        <div class="skill-card">
+            <div class="card-header">Backend</div>
+            <div class="card-body">
+                <div class="skill-item java">Java</div>
+                <div class="skill-item node">Node JS</div>
+                <div class="skill-item mysql">MySQL</div>
+            </div>
+        </div>
+
+        <div class="skill-card">
+            <div class="card-header">Data</div>
+            <div class="card-body">
+                <div class="skill-item rlang">R</div>
+                <div class="skill-item python">Python</div>
+            </div>
+        </div>
+
+        <div class="skill-card">
+            <div class="card-header">Other</div>
+            <div class="card-body">
+                <div class="skill-item figma">Figma</div>
+                <div class="skill-item github">GitHub</div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        Copyright ©2025, <a href="mailto:j19chen@siena.edu">Jeffrey Cheng</a>
+    </footer>
+</body>
+
+</html>
